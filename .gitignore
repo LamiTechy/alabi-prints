@@ -28,3 +28,4 @@ next-env.d.ts
 # local screenshots / chrome profiles from scripts
 .next/shots
 .next/chrome-profile*
+dev.log

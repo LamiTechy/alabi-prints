@@ -4,22 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-export const STATUS_OPTIONS = [
-  { value: "new", label: "New" },
-  { value: "contacted", label: "Contacted" },
-  { value: "in_progress", label: "In Progress" },
-  { value: "completed", label: "Completed" },
-] as const;
-
-export type StatusValue = (typeof STATUS_OPTIONS)[number]["value"];
-
-const statusStyles: Record<StatusValue, string> = {
-  new: "bg-brand/10 text-brand",
-  contacted: "bg-cyan/15 text-cyan-700",
-  in_progress: "bg-yellow/25 text-yellow-700",
-  completed: "bg-[#25D366]/15 text-[#0F7A3D]",
-};
+import { STATUS_OPTIONS, statusStyles, type StatusValue } from "@/lib/status";
 
 export function StatusSelect({ id, status }: { id: string; status: StatusValue }) {
   const router = useRouter();

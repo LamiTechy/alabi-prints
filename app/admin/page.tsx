@@ -3,12 +3,13 @@ import Link from "next/link";
 import { desc } from "drizzle-orm";
 import { FileText, Inbox, Phone, Search } from "lucide-react";
 import { AdminBar } from "@/components/admin/AdminBar";
-import { StatusSelect, STATUS_OPTIONS, type StatusValue } from "@/components/admin/StatusSelect";
+import { StatusSelect } from "@/components/admin/StatusSelect";
 import { Logo } from "@/components/Logo";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { getDb, quoteRequests } from "@/db";
 import { getSession } from "@/lib/auth";
 import { waLink } from "@/lib/links";
+import { STATUS_OPTIONS, statusLabels, type StatusValue } from "@/lib/status";
 import { pageMeta } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -19,13 +20,6 @@ export const metadata: Metadata = pageMeta({
 });
 
 export const dynamic = "force-dynamic";
-
-const statusLabels: Record<StatusValue, string> = {
-  new: "New",
-  contacted: "Contacted",
-  in_progress: "In Progress",
-  completed: "Completed",
-};
 
 function formatDate(value: Date | string) {
   const date = typeof value === "string" ? new Date(value) : value;
